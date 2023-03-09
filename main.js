@@ -1,8 +1,8 @@
 const pluginManager = require('../../src/modules/plugins/manager.js');
-const configFile = require('./dev.json');
+const devConfig = require('./dev.json');
 
-module.exports = class testPlugin extends pluginManager {
+module.exports = class examplePlugin extends pluginManager {
 	constructor(client) {
-		super(client, configFile);
+		super(client, devConfig);
 	}
 };

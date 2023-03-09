@@ -1,0 +1,13 @@
+{
+    "name": "Test Plugin",
+    "author": "Zeroknights#2373",
+    "version": "1.0.0",
+    "requires_common_version": "1.0.0",
+    "configuration_files": {
+        "test.yml": {
+            "name": "test",
+            "type": ".yml",
+            "path": "./plugins/general/data/configs/"
+        }
+    }
+}

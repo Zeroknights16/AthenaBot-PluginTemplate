@@ -9,6 +9,7 @@ module.exports = class AddCommand extends commandManager {
 				.setDescription('Test command')
 				.addUserOption(option => option.setName('user').setDescription('User')),
 			category: 'general',
+			plugin: 'general',
 		});
 	}
 

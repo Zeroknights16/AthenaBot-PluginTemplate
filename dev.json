@@ -6,7 +6,6 @@
     "configuration_files": {
         "test.yml": {
             "name": "test",
-            "type": ".yml",
             "path": "./plugins/general/data/configs/"
         }
     }

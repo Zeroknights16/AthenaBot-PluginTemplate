@@ -1,6 +1,6 @@
 const pluginManager = require('../../src/modules/plugins/manager.js');
 const devConfig = require('./dev.json');
-// const manager = require('./manager.js')
+const manager = require('./manager.js')
 
 const writer = {
 	'%config_name%': {

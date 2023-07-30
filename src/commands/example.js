@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const commandManager = require('../../../../src/modules/commands/manager.js');
 
-module.exports = class addCommand extends commandManager {
+module.exports = class testCommand extends commandManager {
 	constructor(client) {
 		super(client, {
 			data: new Discord.SlashCommandBuilder()

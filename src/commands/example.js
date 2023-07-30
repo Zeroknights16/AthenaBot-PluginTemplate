@@ -10,6 +10,7 @@ module.exports = class addCommand extends commandManager {
 				.addUserOption(option => option.setName('user').setDescription('User')),
 			category: 'general',
 			plugin: 'general',
+			global: false,
 		});
 	}
 

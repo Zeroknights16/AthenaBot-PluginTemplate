@@ -11,6 +11,8 @@ module.exports = class testCommand extends commandManager {
 			category: 'general',
 			plugin: 'general',
 			global: false,
+			ownerOnly: false,
+			custom: null,
 		});
 	}
 

@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "requires_common_version": "1.0.0",
     "configuration_files": {
-        "test.yml": {
+        "test.json5": {
             "name": "test",
             "path": "./plugins/general/data/configs/"
         }

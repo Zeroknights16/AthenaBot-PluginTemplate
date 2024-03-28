@@ -1,0 +1,4 @@
+Please do not edit these configs. 
+
+After starting the bot all available configs will be 
+generated in the ``/configuration`` directory.

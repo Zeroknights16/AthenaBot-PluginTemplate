@@ -2,7 +2,7 @@ const plugin = require('../../main/discord/core/plugins/plugin.js');
 
 module.exports = class templatePlugin extends plugin {
 	constructor(heart) {
-		super(heart, { name: 'template', author: 'Zeroknights', version: '1.0.0', dependencies: [], softDependencies: ['general'] });
+		super(heart, { name: 'template', author: 'Zeroknights', version: '1.0.0', priority: 2, dependencies: [], softDependencies: ['general'] });
 	}
 
 	async preLoad() {

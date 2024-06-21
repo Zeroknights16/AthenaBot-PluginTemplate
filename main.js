@@ -1,4 +1,5 @@
 const plugin = require('../../main/discord/core/plugins/plugin.js');
+const testHandler = require('./src/handler/test.js');
 
 module.exports = class test extends plugin {
 	constructor(heart) {
@@ -28,5 +29,6 @@ module.exports = class test extends plugin {
 
 	async load() {
 		console.log('The plugin is loading now...');
+		this.heart.core.discord.core.handler.manager.register(new testHandler(this.heart));
 	}
 };

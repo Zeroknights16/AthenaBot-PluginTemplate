@@ -1,0 +1,15 @@
+{
+    // You can comment here,
+    config: {
+        // here
+        bot_name: "Athena",
+        // or here
+        bot_id: "22354373457231251362",
+        // and even here
+        // 
+        //
+        //
+        // or here :)
+        bot: true,
+    }
+}

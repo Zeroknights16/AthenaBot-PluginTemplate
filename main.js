@@ -7,7 +7,7 @@ module.exports = class test extends plugin {
 	}
 
 	async preLoad() {
-		console.log('The plugin is pre-loading now...');
+		this.heart.core.console.log(this.heart.core.console.type.startup, 'The plugin is pre-loading now...');
 		const helloConfig = new this.heart.core.discord.core.config.interface(
 			this.heart,
 			{ name: 'hello', plugin: this.getName() },
@@ -28,7 +28,7 @@ module.exports = class test extends plugin {
 	}
 
 	async load() {
-		console.log('The plugin is loading now...');
+		this.heart.core.console.log(this.heart.core.console.type.startup, 'The plugin is loading now...');
 		this.heart.core.discord.core.handler.manager.register(new testHandler(this.heart));
 	}
 };

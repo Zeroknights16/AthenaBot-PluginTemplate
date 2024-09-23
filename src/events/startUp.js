@@ -7,6 +7,6 @@ module.exports = class startUp extends event {
 	}
 
 	execute() {
-		console.log('The bot is ready now :)')
+		this.heart.core.console.log(this.heart.core.console.type.log, 'The bot is ready now :)');
 	}
 };

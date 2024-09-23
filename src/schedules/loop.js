@@ -6,6 +6,6 @@ module.exports = class loop extends scheduledTask {
 	}
 
 	execute() {
-		console.log('Ey! 60 seconds have passed since the last time :-:');
+		this.heart.core.console.log(this.heart.core.console.type.log, '60 seconds have passed since the last time :-:');
 	}
 };

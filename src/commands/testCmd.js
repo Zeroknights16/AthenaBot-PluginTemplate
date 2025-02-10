@@ -9,9 +9,9 @@ module.exports = class test extends command {
 				.setName(cmdConfig.commands.test?.name || 'test')
 				.setDescription(cmdConfig.commands.test?.description || 'Test command'),
 			contextMenu: false,
-			global: false,
-			music: null,
+			global: true,
 			category: 'general',
+			bypass: true,
 		});
 	}
 

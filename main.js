@@ -3,7 +3,7 @@ const testHandler = require('./src/handler/test.js');
 
 module.exports = class test extends plugin {
 	constructor(heart) {
-		super(heart, { name: 'test', author: 'Zeroknights', version: '1.0.0', priority: 0, dependencies: ['core'], softDependencies: [], channels: ['test_log'] });
+		super(heart, { name: 'test', author: 'Zeroknights', version: '1.0.0', priority: 0, dependencies: ['core'], softDependencies: [], channels: [] });
 	}
 
 	async preLoad() {

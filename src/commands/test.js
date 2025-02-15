@@ -11,6 +11,10 @@ module.exports = class test extends command {
 			contextMenu: false,
 			global: true,
 			category: 'general',
+
+			// Make sure this is set to true.
+			// This will let the command bypass any permission checks which otherwise would lead to errors.
+			// Use Discord's built in permission system or built your own one.
 			bypass: true,
 		});
 	}

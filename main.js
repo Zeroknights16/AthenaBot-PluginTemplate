@@ -1,7 +1,21 @@
 const plugin = require('../../main/discord/core/plugins/plugin.js');
 const testHandler = require('./src/handler/test.js');
 
+/* eslint-disable no-unused-vars */
+const heartType = require('../../types/heart.js');
+const pluginType = require('../../types/discord/core/plugins/plugin.js');
+/* eslint-enable no-unused-vars */
+
+/**
+ * A class representing the test plugin.
+ * @class
+ * @extends pluginType
+ */
 module.exports = class test extends plugin {
+	/**
+     * Creates an instance of this plugin.
+     * @param {heartType} heart - The heart of the bot.
+     */
 	constructor(heart) {
 		super(heart, { name: 'test', author: 'Zeroknights', version: '1.0.0', priority: 0, dependencies: ['core'], softDependencies: [], channels: [] });
 	}

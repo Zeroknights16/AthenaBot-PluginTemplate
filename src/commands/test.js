@@ -1,7 +1,24 @@
 const { SlashCommandBuilder } = require('discord.js');
 const command = require('../../../../main/discord/core/commands/command.js');
 
+/* eslint-disable no-unused-vars */
+const heartType = require('../../../../types/heart.js');
+const commandType = require('../../../../types/discord/core/commands/commands.js');
+const { CommandInteraction } = require('discord.js');
+/* eslint-enable no-unused-vars */
+
+
+/**
+ * Test command class.
+ * @class
+ * @extends commandType
+ */
 module.exports = class test extends command {
+	/**
+     * Creates an instance of the command.
+     * @param {heartType} heart - The heart of the bot.
+     * @param {Object} cmdConfig - The command configuration.
+     */
 	constructor(heart, cmdConfig) {
 		super(heart, {
 			name: 'test',
@@ -19,6 +36,11 @@ module.exports = class test extends command {
 		});
 	}
 
+	/**
+     * Executes the command.
+     * @param {CommandInteraction} interaction - The interaction object.
+     * @param {Object} langConfig - The language configuration.
+     */
 	async execute(interaction, langConfig) {
 		try {
 			interaction.reply({ text: 'Hello World!', ephemeral: true });

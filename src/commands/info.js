@@ -5,11 +5,13 @@ const { SlashCommandBuilder, PresenceUpdateStatus, roleMention, MessageFlags } =
 const moment = require('moment');
 const command = require('../../../../main/discord/core/commands/command.js');
 
-/* eslint-disable no-unused-vars */
-const heartType = require('../../../../types/heart.js');
-const commandType = require('../../../../types/discord/core/commands/commands.js');
-const { CommandInteraction } = require('discord.js');
-/* eslint-enable no-unused-vars */
+/* eslint-disable no-unused-vars, no-constant-condition */
+if (null) {
+	const heartType = require('../../../../types/heart.js');
+	const commandType = require('../../../../types/discord/core/commands/commands.js');
+	const { CommandInteraction } = require('discord.js');
+}
+/* eslint-enable no-unused-vars, no-constant-condition  */
 
 
 /**

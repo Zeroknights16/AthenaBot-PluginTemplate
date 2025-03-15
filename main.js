@@ -1,10 +1,12 @@
 const plugin = require('../../main/discord/core/plugins/plugin.js');
 const testHandler = require('./src/handler/test.js');
 
-/* eslint-disable no-unused-vars */
-const heartType = require('../../types/heart.js');
-const pluginType = require('../../types/discord/core/plugins/plugin.js');
-/* eslint-enable no-unused-vars */
+/* eslint-disable no-unused-vars, no-constant-condition */
+if (null) {
+	const heartType = require('../../types/heart.js');
+	const pluginType = require('../../types/discord/core/plugins/plugin.js');
+}
+/* eslint-enable no-unused-vars, no-constant-condition  */
 
 /**
  * A class representing the test plugin.

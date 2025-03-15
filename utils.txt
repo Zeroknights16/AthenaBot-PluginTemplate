@@ -21,6 +21,6 @@ const model = this.heart.core.database.getModel('<model name>').getModel();
 
 
 
-(!) **INFO:** For better intellisense please use VisualStudioCode. With V2.3.3 we have introduced
+(!) **INFO:** For better intellisense please use Visual Studio Code. With V2.3.3 we have introduced
 types for better intellisense. You are now able to view a complete list of most of the functions 
 AthenaBot has to offer when placed in the plugins directory of AthenaBot.

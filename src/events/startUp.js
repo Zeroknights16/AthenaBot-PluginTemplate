@@ -1,11 +1,13 @@
 const event = require('../../../../main/discord/core/events/event.js');
 const { Events } = require('discord.js');
 
-/* eslint-disable no-unused-vars */
-const heartType = require('../../../../types/heart.js');
-const eventType = require('../../../../types/discord/core/events/events.js');
-const { Client } = require('discord.js');
-/* eslint-enable no-unused-vars */
+/* eslint-disable no-unused-vars, no-constant-condition */
+if (null) {
+	const heartType = require('../../../../types/heart.js');
+	const eventType = require('../../../../types/discord/core/events/events.js');
+	const { Client } = require('discord.js');
+}
+/* eslint-enable no-unused-vars, no-constant-condition  */
 
 
 /**

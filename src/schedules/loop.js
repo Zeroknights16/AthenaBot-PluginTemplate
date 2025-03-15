@@ -1,9 +1,11 @@
 const scheduledTask = require('../../../../main/discord/core/schedule/schedule.js');
 
-/* eslint-disable no-unused-vars */
-const heartType = require('../../../../types/heart.js');
-const scheduleType = require('../../../../types/discord/core/schedule/schedule.js');
-/* eslint-enable no-unused-vars */
+/* eslint-disable no-unused-vars, no-constant-condition */
+if (null) {
+	const heartType = require('../../../../types/heart.js');
+	const scheduleType = require('../../../../types/discord/core/schedule/schedule.js');
+}
+/* eslint-enable no-unused-vars, no-constant-condition  */
 
 
 /**

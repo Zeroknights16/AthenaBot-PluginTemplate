@@ -11,5 +11,15 @@
         //
         // or here :)
         bot: true,
+        
+
+        // Permission configuration. The following configuration works exactly like the
+        // permission configuration in your permission config file. All permission levels
+        // that are available over there can be used here.
+        permissions: {
+            test_command: 'everyone',
+            info_command: 'member',
+            ticket_inactivity_event: 'everyone',
+        },
     }
 }

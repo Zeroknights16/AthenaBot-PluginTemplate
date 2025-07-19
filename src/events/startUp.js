@@ -21,7 +21,7 @@ module.exports = class startUp extends event {
      * @param {heartType} heart - The heart of the bot.
      */
 	constructor(heart) {
-		super(heart, { name: 'startUp', event: { discord: Events.ClientReady, bypassManager: false, dm: false } });
+		super(heart, { name: 'startUp', event: { discord: Events.ClientReady, bypassManager: false, dm: false, bypassRestrictions: true, permissionLevel: null } });
 	}
 
 	/**

@@ -32,6 +32,11 @@ module.exports = class test extends plugin {
 					bot_name: undefined,
 					bot_id: undefined,
 					bot: undefined,
+					permissions: {
+						test_command: undefined,
+						info_command: undefined,
+						ticket_inactivity_event: undefined,
+					},
 				}
 			},
 		);

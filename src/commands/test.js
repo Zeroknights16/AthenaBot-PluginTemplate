@@ -22,6 +22,8 @@ module.exports = class test extends command {
      * @param {Object} cmdConfig - The command configuration.
      */
 	constructor(heart, cmdConfig) {
+		const helloConfig = heart.core.discord.core.config.manager.get('hello').get();
+
 		super(heart, {
 			name: 'test',
 			data: new SlashCommandBuilder()
@@ -30,11 +32,15 @@ module.exports = class test extends command {
 			contextMenu: false,
 			global: true,
 			category: 'general',
-
 			// Make sure this is set to true.
-			// This will let the command bypass any permission checks which otherwise would lead to errors.
-			// Use Discord's built in permission system or built your own one.
 			bypass: true,
+			// If you want to bypass the built in permission system, set this to null.
+			// (e.g. if everyone should be able to use the command or you use your own permission system)
+			//
+			// Otherwise set this to a permission level of the permission configuration file.
+			// The best way to do so is, to create a config file for your addon and let them set a permission level for their commands.
+			// If this is set to an invalid permission level, Athena will handle this case automatically.
+			permissionLevel: helloConfig.config.permissions.test_command,
 		});
 	}
 
@@ -45,7 +51,7 @@ module.exports = class test extends command {
      */
 	async execute(interaction, langConfig) {
 		try {
-			interaction.reply({ text: 'Hello World!', ephemeral: true });
+			interaction.reply({ content: 'Hello World!', ephemeral: true });
 		}
 		catch (err) {
 			this.heart.core.console.log(this.heart.core.console.type.error, `An issue occured while executing command ${this.getName()}`);

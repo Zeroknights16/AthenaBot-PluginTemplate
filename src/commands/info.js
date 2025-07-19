@@ -26,6 +26,8 @@ module.exports = class info extends command {
      * @param {Object} cmdConfig - The command configuration.
      */
 	constructor(heart, cmdConfig) {
+		const helloConfig = heart.core.discord.core.config.manager.get('hello').get();
+
 		super(heart, {
 			name: 'info',
 			data: new SlashCommandBuilder()
@@ -36,6 +38,7 @@ module.exports = class info extends command {
 			global: true,
 			category: 'general',
             bypass: true,
+			permissionLevel: helloConfig.config.permissions.info_command,
 		});
 	}
 

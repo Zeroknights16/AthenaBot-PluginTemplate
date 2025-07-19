@@ -24,9 +24,12 @@ module.exports = class ticketInactivity extends event {
      * @param {heartType} heart - The heart of the bot.
      */
 	constructor(heart) {
+		const helloConfig = heart.core.discord.core.config.manager.get('hello').get();
+
         // Make sure to keep bypassRestrictions to true due to permission checks.
         // Set dm to true if the interaction is fired in dms.
-		super(heart, { name: 'ticketInactivity', event: { discord: Events.InteractionCreate, bypassManager: false, dm: false, bypassRestrictions: true } });
+		// For permissionLevel, take a look at the comments at the test command.
+		super(heart, { name: 'ticketInactivity', event: { discord: Events.InteractionCreate, bypassManager: false, dm: false, bypassRestrictions: true, permissionLevel: helloConfig.config.permissions.ticket_inactivity_event } });
 	}
 
 	/**

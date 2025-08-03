@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, MessageFlags } = require('discord.js');
 const command = require('../../../../main/discord/core/commands/command.js');
 
 /* eslint-disable no-unused-vars, no-constant-condition */
@@ -51,12 +51,12 @@ module.exports = class test extends command {
      */
 	async execute(interaction, langConfig) {
 		try {
-			interaction.reply({ content: 'Hello World!', ephemeral: true });
+			interaction.reply({ content: 'Hello World!', flags: MessageFlags.Ephemeral });
 		}
 		catch (err) {
 			this.heart.core.console.log(this.heart.core.console.type.error, `An issue occured while executing command ${this.getName()}`);
 			new this.heart.core.error.interface(this.heart, err);
-			interaction.reply({ embeds: [this.heart.core.util.discord.generateErrorEmbed(langConfig.lang.unexpected_command_error.replace(/%command%/g, `/${interaction.commandName}`))], ephemeral: true });
+			interaction.reply({ embeds: [this.heart.core.util.discord.generateErrorEmbed(langConfig.lang.unexpected_command_error.replace(/%command%/g, `/${interaction.commandName}`))], flags: MessageFlags.Ephemeral });
 		}
 	}
 };

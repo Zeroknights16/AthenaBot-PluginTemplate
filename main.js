@@ -19,7 +19,7 @@ module.exports = class test extends plugin {
      * @param {heartType} heart - The heart of the bot.
      */
 	constructor(heart) {
-		super(heart, { name: 'test', author: 'Zeroknights', version: '1.0.0', priority: 0, dependencies: ['core'], softDependencies: [], nodeDependencies: [], channels: [] });
+		super(heart, { name: 'test', author: 'Zeroknights', version: '1.0.0', priority: 0, dependencies: ['core'], softDependencies: [], nodeDependencies: [], channels: [], dashboard: { cannotDisable: false } });
 	}
 
 	async preLoad() {

@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, MessageFlags } = require('discord.js');
+const { SlashCommandBuilder, MessageFlags, channelMention } = require('discord.js');
 const command = require('../../../../main/discord/core/commands/command.js');
 
 /* eslint-disable no-unused-vars, no-constant-condition */
@@ -51,7 +51,12 @@ module.exports = class test extends command {
      */
 	async execute(interaction, langConfig) {
 		try {
-			interaction.reply({ content: 'Hello World!', flags: MessageFlags.Ephemeral });
+			// Importing the configured channel "hello_world"
+			const channelId = this.heart.core.database.config.getChannel('hello_world')
+			const channel = guild.channels.cache.get(channelId);
+			if (!channel) return interaction.reply({ content: 'Your "hello world" channel is not setuped. Please use /setup', flags: MessageFlags.Ephemeral });
+
+			interaction.reply({ content: `Hello World! The configured channel can be found here ${channelMention(channelId)}` });
 		}
 		catch (err) {
 			this.heart.core.console.log(this.heart.core.console.type.error, `An issue occured while executing command ${this.getName()}`);

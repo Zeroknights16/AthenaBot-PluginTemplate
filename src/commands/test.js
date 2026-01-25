@@ -53,7 +53,7 @@ module.exports = class test extends command {
 		try {
 			// Importing the configured channel "hello_world"
 			const channelId = this.heart.core.database.config.getChannel('hello_world')
-			const channel = guild.channels.cache.get(channelId);
+			const channel = interaction.guild.channels.cache.get(channelId);
 			if (!channel) return interaction.reply({ content: 'Your "hello world" channel is not setuped. Please use /setup', flags: MessageFlags.Ephemeral });
 
 			interaction.reply({ content: `Hello World! The configured channel can be found here ${channelMention(channelId)}` });

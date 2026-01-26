@@ -1,1 +1,0 @@
-Our documentation can be found at https://github.com/Zeroknights16/AthenaBot-PluginTemplate/wiki.

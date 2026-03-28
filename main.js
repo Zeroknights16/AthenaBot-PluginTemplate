@@ -26,7 +26,7 @@ module.exports = class test extends plugin {
 		this.heart.core.console.log(this.heart.core.console.type.startup, 'The plugin is pre-loading now...');
 		const helloConfig = new this.heart.core.discord.core.config.interface(
 			this.heart,
-			{ name: 'hello', plugin: this.getName() },
+			{ name: 'hello', plugin: this.getName(), dashboardConfigurable: true },
 			{
 				config: {
 					bot_name: undefined,
@@ -37,7 +37,9 @@ module.exports = class test extends plugin {
 						info_command: undefined,
 						ticket_inactivity_event: undefined,
 					},
-				}
+					dashboard_panels: undefined,
+					alert_rules: undefined,
+				},
 			},
 		);
 		const loadHelloConfig = await this.heart.core.discord.core.config.manager.load(helloConfig);

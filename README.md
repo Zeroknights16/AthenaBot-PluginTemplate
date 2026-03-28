@@ -8,16 +8,18 @@ This template includes pre-configured directories and example files to help you 
 
 ## 📚 Documentation
 
-Our documentation can be found under the "Wiki" tab here on [Github](https://github.com/Zeroknights16/AthenaBot-PluginTemplate/wiki).
+Our documentation can be found under the "Wiki" tab here on [GitHub](https://github.com/Zeroknights16/AthenaBot-PluginTemplate/wiki).
 
 ## 📁 Project Structure
 
 ```yaml
 ├── data/
 │   ├── configs/          # Configuration files
+│   ├── dashboard/        # Dashboard config editor schema files
 │   └── temp/             # Temporary files
 ├── src/
 │   ├── commands/         # Bot commands
+│   ├── dashboard/        # Dashboard addon pages/components/api
 │   ├── events/           # Event handlers
 │   ├── handler/          # Custom handlers
 │   ├── models/           # Data models

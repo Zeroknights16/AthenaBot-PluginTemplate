@@ -1,0 +1,100 @@
+{
+    "bot_name": {
+        "type": 0,
+        "name": "Bot Name",
+        "description": "Display name used by your plugin.",
+        "autocomplete": []
+    },
+    "bot_id": {
+        "type": 0,
+        "name": "Bot ID",
+        "description": "Discord user ID of your bot instance.",
+        "autocomplete": []
+    },
+    "bot": {
+        "type": 2,
+        "name": "Bot Enabled",
+        "description": "Enable or disable plugin features globally.",
+        "autocomplete": [true, false]
+    },
+    "permissions": {
+        "type": 10,
+        "name": "Permissions",
+        "description": "Permission levels used by your plugin commands.",
+        "test_command": {
+            "type": 0,
+            "name": "Test Command",
+            "description": "Permission level for /test.",
+            "autocomplete": ["everyone", "member", "admin", "owner"]
+        },
+        "info_command": {
+            "type": 0,
+            "name": "Info Command",
+            "description": "Permission level for /info.",
+            "autocomplete": ["everyone", "member", "admin", "owner"]
+        },
+        "ticket_inactivity_event": {
+            "type": 0,
+            "name": "Ticket Inactivity Event",
+            "description": "Permission level for ticket inactivity actions.",
+            "autocomplete": ["everyone", "member", "admin", "owner"]
+        }
+    },
+    "dashboard_panels": {
+        "type": 1000,
+        "name": "Dashboard Panels",
+        "description": "Array of structured objects. Each entry follows the schema below.",
+        "extra": "Type 1000 supports custom array entries where each entry is rendered from your schema.",
+        "schema": {
+            "name": {
+                "type": 0,
+                "label": "Panel Name",
+                "placeholder": "Welcome"
+            },
+            "channel_id": {
+                "type": 0,
+                "label": "Channel ID",
+                "placeholder": "000000000000000000"
+            },
+            "enabled": {
+                "type": 3,
+                "label": "Enabled"
+            },
+            "tags": {
+                "type": 5,
+                "label": "Tags",
+                "placeholder": "Type and press Enter"
+            }
+        },
+        "autocomplete": []
+    },
+    "alert_rules": {
+        "type": 1001,
+        "name": "Alert Rules",
+        "description": "Dynamic object where each key maps to an array of objects.",
+        "extra": "Type 1001 supports dynamic keys. Every key uses value_schema.schema for each array item.",
+        "value_schema": {
+            "schema": {
+                "role_id": {
+                    "type": 0,
+                    "label": "Role ID",
+                    "placeholder": "000000000000000000"
+                },
+                "threshold": {
+                    "type": 2,
+                    "label": "Threshold"
+                },
+                "enabled": {
+                    "type": 3,
+                    "label": "Enabled"
+                },
+                "notes": {
+                    "type": 5,
+                    "label": "Notes",
+                    "placeholder": "Type and press Enter"
+                }
+            }
+        },
+        "autocomplete": []
+    }
+}

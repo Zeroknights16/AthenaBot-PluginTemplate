@@ -21,6 +21,11 @@ module.exports = class startUp extends event {
      * @param {heartType} heart - The heart of the bot.
      */
 	constructor(heart) {
+		// Make sure to keep bypassRestrictions to true due to permission checks.
+		//
+		// For interaction events only:
+        // Set dm to true if the interaction is fired in dms.
+		// For permissionLevel, take a look at the comments at the test command.
 		super(heart, { name: 'startUp', event: { discord: Events.ClientReady, bypassManager: false, dm: false, bypassRestrictions: true, permissionLevel: null } });
 	}
 

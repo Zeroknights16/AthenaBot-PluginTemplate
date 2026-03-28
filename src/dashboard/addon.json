@@ -1,0 +1,6 @@
+{
+  "name": "Template Addon",
+  "slug": "template-addon",
+  "icon": "TbPlug",
+  "description": "Sample custom dashboard page bundled with the plugin template."
+}

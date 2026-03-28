@@ -21,5 +21,23 @@
             info_command: 'member',
             ticket_inactivity_event: 'everyone',
         },
+
+        // Array of objects example (dashboard type 1000)
+        dashboard_panels: [{
+            name: 'Welcome',
+            channel_id: '000000000000000000',
+            enabled: true,
+            tags: ['intro', 'rules']
+        }],
+
+        // Dynamic object map with schema example (dashboard type 1001)
+        alert_rules: {
+            raid_protection: [{
+                role_id: '000000000000000000',
+                threshold: 5,
+                enabled: true,
+                notes: ['Auto lock enabled']
+            }]
+        },
     }
 }

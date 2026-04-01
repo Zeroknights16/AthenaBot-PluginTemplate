@@ -12,34 +12,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 1️⃣ FULL TEMPLATE
+      # FULL TEMPLATE (everything)
       - name: Create full template zip
-        run: zip -r AthenaBot-template-full.zip . \
-          -x ".git/*" ".github/*"
+        run: |
+          zip -r AthenaBot-template-full.zip . \
+            -x ".git/*" ".github/*" "*.zip"
 
-      # 2️⃣ NO DASHBOARD TEMPLATE
+      # NO DASHBOARD TEMPLATE
       - name: Create no-dashboard template zip
-        run: zip -r AthenaBot-template-no-dashboard.zip . \
-          -x ".git/*" ".github/*" \
-             "data/dashboard/*" \
-             "src/dashboard/*"
+        run: |
+          zip -r AthenaBot-template-no-dashboard.zip . \
+            -x ".git/*" ".github/*" "*.zip" \
+               "data/dashboard/*" \
+               "src/dashboard/*"
 
-      # 3️⃣ MINIMAL TEMPLATE (no dashboard + routes + handler)
+      # MINIMAL TEMPLATE (no dashboard + routes + handler)
       - name: Create minimal template zip
-        run: zip -r AthenaBot-template-minimal.zip . \
-          -x ".git/*" ".github/*" \
-             "data/dashboard/*" \
-             "src/dashboard/*" \
-             "src/routes/*" \
-             "src/handler/*"
+        run: |
+          zip -r AthenaBot-template-minimal.zip . \
+            -x ".git/*" ".github/*" "*.zip" \
+               "data/dashboard/*" \
+               "src/dashboard/*" \
+               "src/routes/*" \
+               "src/handler/*"
 
-      # Upload to release
       - name: Upload release assets
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.event.release.tag_name }}
           files: |
             AthenaBot-template-full.zip
             AthenaBot-template-no-dashboard.zip

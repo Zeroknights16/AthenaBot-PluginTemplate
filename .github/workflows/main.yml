@@ -17,6 +17,7 @@ jobs:
 
       - name: Create Templates
         run: |
+          VERSION="${{ github.event.release.tag_name }}"
           mkdir dist
 
           clean_base() {
@@ -25,18 +26,18 @@ jobs:
 
           cp -r . build_full
           clean_base build_full
-          cd build_full && zip -r ../dist/AthenaBot-template-full.zip . && cd ..
+          cd build_full && zip -r "../dist/AthenaBot-PluginTemplate-${VERSION}.zip" . && cd ..
 
           cp -r . build_no_dash
           clean_base build_no_dash
           rm -rf build_no_dash/data/dashboard build_no_dash/src/dashboard
-          cd build_no_dash && zip -r ../dist/AthenaBot-template-no-dashboard.zip . && cd ..
+          cd build_no_dash && zip -r "../dist/AthenaBot-PluginTemplate-no-dashboard-${VERSION}.zip" . && cd ..
 
           cp -r . build_minimal
           clean_base build_minimal
           rm -rf build_minimal/data/dashboard build_minimal/src/dashboard \
                  build_minimal/src/routes build_minimal/src/handler
-          cd build_minimal && zip -r ../dist/AthenaBot-template-minimal.zip . && cd ..
+          cd build_minimal && zip -r "../dist/AthenaBot-PluginTemplate-minimal-${VERSION}.zip" . && cd ..
 
       - name: Upload release assets
         uses: softprops/action-gh-release@v2

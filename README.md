@@ -15,8 +15,7 @@ Our documentation can be found under the "Wiki" tab here on [GitHub](https://git
 ```yaml
 ├── data/
 │   ├── configs/          # Configuration files
-│   ├── dashboard/        # Dashboard config editor schema files
-│   └── temp/             # Temporary files
+│   └── dashboard/        # Dashboard config editor schema files
 ├── src/
 │   ├── commands/         # Bot commands
 │   ├── dashboard/        # Dashboard addon pages/components/api

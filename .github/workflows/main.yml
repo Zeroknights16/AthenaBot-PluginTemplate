@@ -15,35 +15,31 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # FULL TEMPLATE (everything except README)
-      - name: Create full template zip
+      - name: Create Templates
         run: |
-          zip -r AthenaBot-template-full.zip . \
-            -x ".git/*" ".github/*" "*.zip" "README.md"
+          mkdir dist
 
-      # NO DASHBOARD TEMPLATE
-      - name: Create no-dashboard template zip
-        run: |
-          zip -r AthenaBot-template-no-dashboard.zip . \
-            -x ".git/*" ".github/*" "*.zip" "README.md" \
-               "data/dashboard/*" \
-               "src/dashboard/*"
+          clean_base() {
+            rm -rf "$1/.git" "$1/.github" "$1/README.md"
+          }
 
-      # MINIMAL TEMPLATE (no dashboard + routes + handler)
-      - name: Create minimal template zip
-        run: |
-          zip -r AthenaBot-template-minimal.zip . \
-            -x ".git/*" ".github/*" "*.zip" "README.md" \
-               "data/dashboard/*" \
-               "src/dashboard/*" \
-               "src/routes/*" \
-               "src/handler/*"
+          cp -r . build_full
+          clean_base build_full
+          cd build_full && zip -r ../dist/AthenaBot-template-full.zip . && cd ..
+
+          cp -r . build_no_dash
+          clean_base build_no_dash
+          rm -rf build_no_dash/data/dashboard build_no_dash/src/dashboard
+          cd build_no_dash && zip -r ../dist/AthenaBot-template-no-dashboard.zip . && cd ..
+
+          cp -r . build_minimal
+          clean_base build_minimal
+          rm -rf build_minimal/data/dashboard build_minimal/src/dashboard \
+                 build_minimal/src/routes build_minimal/src/handler
+          cd build_minimal && zip -r ../dist/AthenaBot-template-minimal.zip . && cd ..
 
       - name: Upload release assets
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.event.release.tag_name }}
-          files: |
-            AthenaBot-template-full.zip
-            AthenaBot-template-no-dashboard.zip
-            AthenaBot-template-minimal.zip
+          files: dist/*.zip

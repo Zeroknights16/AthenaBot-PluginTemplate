@@ -20,21 +20,16 @@ jobs:
           VERSION="${{ github.event.release.tag_name }}"
           mkdir dist
 
-          clean_base() {
-            rm -rf "$1/.git" "$1/.github" "$1/README.md"
-          }
+          RSYNC_BASE="rsync -a --exclude='.git' --exclude='.github' --exclude='README.md' --exclude='dist' --exclude='build_full' --exclude='build_no_dash' --exclude='build_minimal'"
 
-          cp -r . build_full
-          clean_base build_full
+          eval "$RSYNC_BASE . build_full/"
           cd build_full && zip -r "../dist/AthenaBot-PluginTemplate-${VERSION}.zip" . && cd ..
 
-          cp -r . build_no_dash
-          clean_base build_no_dash
+          eval "$RSYNC_BASE . build_no_dash/"
           rm -rf build_no_dash/data/dashboard build_no_dash/src/dashboard
           cd build_no_dash && zip -r "../dist/AthenaBot-PluginTemplate-no-dashboard-${VERSION}.zip" . && cd ..
 
-          cp -r . build_minimal
-          clean_base build_minimal
+          eval "$RSYNC_BASE . build_minimal/"
           rm -rf build_minimal/data/dashboard build_minimal/src/dashboard \
                  build_minimal/src/routes build_minimal/src/handler
           cd build_minimal && zip -r "../dist/AthenaBot-PluginTemplate-minimal-${VERSION}.zip" . && cd ..

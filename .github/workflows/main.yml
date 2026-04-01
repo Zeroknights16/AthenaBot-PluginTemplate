@@ -15,17 +15,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # FULL TEMPLATE (everything)
+      # FULL TEMPLATE (everything except README)
       - name: Create full template zip
         run: |
           zip -r AthenaBot-template-full.zip . \
-            -x ".git/*" ".github/*" "*.zip"
+            -x ".git/*" ".github/*" "*.zip" "README.md"
 
       # NO DASHBOARD TEMPLATE
       - name: Create no-dashboard template zip
         run: |
           zip -r AthenaBot-template-no-dashboard.zip . \
-            -x ".git/*" ".github/*" "*.zip" \
+            -x ".git/*" ".github/*" "*.zip" "README.md" \
                "data/dashboard/*" \
                "src/dashboard/*"
 
@@ -33,7 +33,7 @@ jobs:
       - name: Create minimal template zip
         run: |
           zip -r AthenaBot-template-minimal.zip . \
-            -x ".git/*" ".github/*" "*.zip" \
+            -x ".git/*" ".github/*" "*.zip" "README.md" \
                "data/dashboard/*" \
                "src/dashboard/*" \
                "src/routes/*" \

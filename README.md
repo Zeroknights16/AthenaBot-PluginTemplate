@@ -10,6 +10,10 @@ This template includes pre-configured directories and example files to help you 
 
 Our documentation can be found under the "Wiki" tab here on [GitHub](https://github.com/Zeroknights16/AthenaBot-PluginTemplate/wiki).
 
+## 🤖 AI Summary
+
+An AI summary is provided in [AI_SUMMARY.md](AI_SUMMARY.md) if you want to use AI to help make a plugin.
+
 ## 📁 Project Structure
 
 ```yaml

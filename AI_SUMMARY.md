@@ -390,6 +390,12 @@ Important:
 
 Emojis:
 
+- Athena provides over 100 built-in custom emojis that plugins can use
+- Upload custom emoji files to `/src/emojis/`; only files in this folder are installed for the plugin
+- Only `.png` files are supported
+- Name each file `<id>.png`, where `<id>` is a unique numeric ID greater than `10000`
+- Emoji IDs must be unique across all plugins; colliding IDs are skipped and existing emojis cannot be overwritten
+- Prefer long numeric IDs to reduce collisions with other plugin developers
 - %custom_emoji_<number>% in resolveEmbed
 - emoji manager: this.heart.core.discord.core.emoji.manager.getEmoji(<id>)
 

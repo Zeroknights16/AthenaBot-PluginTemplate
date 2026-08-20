@@ -31,7 +31,8 @@ jobs:
 
           eval "$RSYNC_BASE . build_minimal/"
           rm -rf build_minimal/data/dashboard build_minimal/src/dashboard \
-                 build_minimal/src/routes build_minimal/src/handler
+               build_minimal/src/routes build_minimal/src/handler \
+               build_minimal/src/emojis
           cd build_minimal && zip -r "../dist/AthenaBot-PluginTemplate-minimal-${VERSION}.zip" . && cd ..
 
       - name: Upload release assets

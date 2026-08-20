@@ -23,6 +23,7 @@ An AI summary is provided in [AI_SUMMARY.md](AI_SUMMARY.md) if you want to use A
 ├── src/
 │   ├── commands/         # Bot commands
 │   ├── dashboard/        # Dashboard addon pages/components/api
+│   ├── emojis   /        # Custom Discord emojis
 │   ├── events/           # Event handlers
 │   ├── handler/          # Custom handlers
 │   ├── models/           # Data models

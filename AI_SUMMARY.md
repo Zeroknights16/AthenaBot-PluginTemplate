@@ -410,7 +410,47 @@ Notes:
 - Use res.status(...).send(this.generateSuccessResponse(...)) helpers
 - Auth key and IP whitelist can be enabled per route
 
-### 17) Plugin manager API
+### 17) Components V2 API
+Athena supports Discord Components V2 through `this.heart.core.util.discord`:
+
+- `resolveComponent(component, placeholders, guild, user)` resolves placeholders in one official Discord component object.
+- `resolveComponents({ components }, placeholders, guild, user)` resolves, validates, and converts Athena's custom component configuration into official Discord component JSON.
+
+Always send Components V2 messages with `flags: MessageFlags.IsComponentsV2`; neither resolver adds the flag. For multiple top-level official components, call `resolveComponent()` for each. The official format is only resolved and is not validated by Athena; Discord validates it when sent.
+
+Custom format:
+
+- Top level must be `{ components: [...] }`.
+- Supported types: `container`, `action-row`, `section`, `text`, `media-gallery`, and `separator`.
+- Custom action rows currently support only one to five URL/link buttons, not interactive `custom_id` buttons.
+- Containers contain one to ten child components.
+- Sections require one to three text entries and a `thumbnail` or link-button accessory.
+- Media galleries contain one to ten image items.
+- Separators use `spacing: 'small'` or `'large'`.
+
+Check the custom resolver result before replying. On invalid input it returns `{ valid: false, errors }`; log the errors and do not send that result to Discord. Validation covers supported keys and types, required properties, array sizes, text lengths, URLs, colors, and accessory types. Placeholder values are resolved before validation.
+
+Both resolvers support custom placeholders and built-in placeholders such as `%user_mention%`, `%user_id%`, `%guild_name%`, `%guild_id%`, `%channel_<id>%`, `%role_<id>%`, `%custom_emoji_<number>%`, date/time values, random values, and bot identity values. User placeholders require a user instance; guild placeholders require a guild instance. Pass `null` when either is unavailable. Explicit custom placeholder values override defaults.
+
+Example:
+
+```js
+const result = this.heart.core.util.discord.resolveComponents(
+	{ components: [{ type: 'container', components: [{ type: 'text', content: 'Welcome %guild%!' }] }] },
+	{},
+	interaction.guild,
+	interaction.user,
+);
+
+if (result.valid === false) {
+	this.heart.core.console.log(this.heart.core.console.type.warn, result.errors.join('\n'));
+	return;
+}
+
+await interaction.reply({ components: result, flags: MessageFlags.IsComponentsV2 });
+```
+
+### 18) Plugin manager API
 Check and access plugins and other components:
 
 - this.core.discord.core.plugin.manager.isLoaded('<plugin>')
@@ -424,7 +464,7 @@ Plugin instance functions:
 - getChannelNames
 - setDisabled, setEnabled, isEnabled
 
-### 18) Patterns from the fun plugin (reference implementation)
+### 19) Patterns from the fun plugin (reference implementation)
 Main plugin setup:
 
 - Defines a large config with dashboardConfigurable: true
@@ -461,7 +501,7 @@ Models:
 
 - starboard model stores message metadata and reaction counts
 
-### 19) Implementation checklist for new plugins
+### 20) Implementation checklist for new plugins
 Use this checklist when implementing a new customer plugin:
 
 1) Define plugin name, version, dependencies, and requiredAthenaVersion.
@@ -474,5 +514,7 @@ Use this checklist when implementing a new customer plugin:
 8) Implement schedules and models if the feature needs periodic tasks or Mongo storage.
 9) Use userData API for user state and never touch Mongo user data directly.
 10) Use embed helpers and emoji manager for consistent UI.
-11) If needed, add REST routes and dashboard pages.
-12) Add stats tracking and emit Athena custom events where relevant.
+11) Use `resolveComponents` for validated custom Components V2 messages, or `resolveComponent` for official Discord component JSON.
+12) Always include `MessageFlags.IsComponentsV2` when sending Components V2 messages and handle resolver validation errors.
+13) If needed, add REST routes and dashboard pages.
+14) Add stats tracking and emit Athena custom events where relevant.
